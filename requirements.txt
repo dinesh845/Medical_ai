@@ -1,0 +1,13 @@
+Flask==3.0.0
+Flask-CORS==4.0.0
+Werkzeug==3.0.1
+Pillow==10.2.0
+numpy==1.26.3
+python-dotenv==1.0.0
+gunicorn==21.2.0
+openai>=1.12.0
+easyocr==1.7.1
+anthropic>=0.7.0
+cryptography>=42.0.0
+scikit-learn==1.5.2
+tensorflow-cpu==2.18.0

@@ -1,0 +1,27 @@
+{
+  "id": "mohitherabbithula/medical-ai-prediagnosis",
+  "title": "Medical AI Pre-Diagnosis System",
+  "code_environment": "python38",
+  "category_ids": [
+    "healthcare",
+    "nlp",
+    "neural networks"
+  ],
+  "is_private": false,
+  "licenses": [
+    {
+      "name": "CC0-1.0"
+    }
+  ],
+  "keywords": [
+    "medical",
+    "ai",
+    "diagnosis",
+    "health",
+    "flask",
+    "chatbot",
+    "openai",
+    "prediagnosis"
+  ],
+  "description": "AI-powered pre-diagnosis system with Flask backend, medical knowledge base, LLM integration, and interactive chatbot. Features symptom analysis, health recommendations, and AI-assisted medical consultation."
+}

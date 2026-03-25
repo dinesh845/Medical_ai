@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediAI - AI Medical Pre-Diagnosis System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <i class="fas fa-heartbeat"></i>
+                <span>MediAI</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link active">Home</a></li>
+                <li><a href="#diagnosis" class="nav-link">Diagnosis</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-background">
+            <div class="hero-overlay"></div>
+        </div>
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <span>AI-Powered Healthcare</span>
+                </div>
+                <h1 class="hero-title">
+                    Advanced Medical <br>
+                    <span class="gradient-text">Pre-Diagnosis System</span>
+                </h1>
+                <p class="hero-description">
+                    Experience cutting-edge AI technology for preliminary health assessment. 
+                    Multi-modal analysis with text, image, and audio inputs for comprehensive evaluation.
+                </p>
+                <div class="hero-buttons">
+                    <button class="btn btn-primary" onclick="scrollToDiagnosis()">
+                        <i class="fas fa-stethoscope"></i> Start Diagnosis
+                    </button>
+                    <button class="btn btn-secondary">
+                        <i class="fas fa-play-circle"></i> Watch Demo
+                    </button>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">98%</div>
+                        <div class="stat-label">Accuracy</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">50K+</div>
+                        <div class="stat-label">Diagnoses</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">24/7</div>
+                        <div class="stat-label">Available</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Multi-Modal AI Analysis</h2>
+                <p class="section-subtitle">Comprehensive health assessment using advanced AI technology</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon text-icon">
+                        <i class="fas fa-comments-medical"></i>
+                    </div>
+                    <h3>Text Symptoms</h3>
+                    <p>Describe your symptoms in natural language. Our AI understands context and medical terminology.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon image-icon">
+                        <i class="fas fa-x-ray"></i>
+                    </div>
+                    <h3>Medical Imaging</h3>
+                    <p>Upload X-rays, CT scans, or MRI images for AI-powered preliminary analysis.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon audio-icon">
+                        <i class="fas fa-microphone"></i>
+                    </div>
+                    <h3>Audio Analysis</h3>
+                    <p>Record cough sounds or describe symptoms verbally for voice pattern analysis.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Diagnosis Form Section -->
+    <section class="diagnosis-section" id="diagnosis">
+        <div class="container">
+            <div class="diagnosis-container">
+                <div class="diagnosis-header">
+                    <h2><i class="fas fa-stethoscope"></i> Medical Pre-Diagnosis</h2>
+                    <p>Please provide your symptoms and medical data for AI analysis</p>
+                    <div class="disclaimer">
+                        <i class="fas fa-info-circle"></i>
+                        <span>This is a preliminary assessment tool. Always consult with a qualified healthcare professional for accurate diagnosis.</span>
+                    </div>
+                </div>
+
+                <form id="diagnosisForm" class="diagnosis-form">
+                    <!-- Patient Information -->
+                    <div class="form-section">
+                        <h3 class="form-section-title">
+                            <i class="fas fa-user"></i> Patient Information
+                        </h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="patientName">Full Name *</label>
+                                <input type="text" id="patientName" name="patientName" required 
+                                       placeholder="Enter your full name">
+                            </div>
+                            <div class="form-group">
+                                <label for="age">Age *</label>
+                                <input type="number" id="age" name="age" min="1" max="120" required 
+                                       placeholder="Age">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="gender">Gender *</label>
+                                <select id="gender" name="gender" required>
+                                    <option value="">Select gender</option>
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="contact">Contact Number</label>
+                                <input type="tel" id="contact" name="contact" 
+                                       placeholder="+1 (555) 123-4567">
+                            </div>
+                            <div class="form-group">
+                                <label for="location">Location *</label>
+                                <select id="location" name="location" required>
+                                    <option value="">Select city</option>
+                                    <option value="vizag">Vizag (Visakhapatnam)</option>
+                                    <option value="kkd">KKD (Kakinada)</option>
+                                    <option value="hyderabad">Hyderabad</option>
+                                    <option value="vijayawada">Vijayawada</option>
+                                    <option value="rajahmundry">Rajahmundry</option>
+                                    <option value="chennai">Chennai</option>
+                                    <option value="bangalore">Bangalore</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            <div class="form-group" id="customCityGroup" style="display: none;">
+                                <label for="customCity">Enter Your City *</label>
+                                <input type="text" id="customCity" name="customCity" placeholder="Type your city name">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Symptoms Description -->
+                    <div class="form-section">
+                        <h3 class="form-section-title">
+                            <i class="fas fa-notes-medical"></i> Symptoms Description
+                        </h3>
+                        <div class="form-group">
+                            <label for="symptoms">Describe Your Symptoms *</label>
+                            <textarea id="symptoms" name="symptoms" rows="4" required 
+                                      placeholder="Please describe your symptoms in detail (e.g., fever, headache, cough, duration, intensity...)"></textarea>
+                            <small class="form-hint">Be as specific as possible for better AI analysis</small>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="duration">Symptoms Duration *</label>
+                                <select id="duration" name="duration" required>
+                                    <option value="">Select duration</option>
+                                    <option value="less-than-day">Less than 1 day</option>
+                                    <option value="1-3-days">1-3 days</option>
+                                    <option value="4-7-days">4-7 days</option>
+                                    <option value="1-2-weeks">1-2 weeks</option>
+                                    <option value="more-than-2-weeks">More than 2 weeks</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="severity">Severity Level *</label>
+                                <select id="severity" name="severity" required>
+                                    <option value="">Select severity</option>
+                                    <option value="mild">Mild</option>
+                                    <option value="moderate">Moderate</option>
+                                    <option value="severe">Severe</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Multi-Modal Upload Section -->
+                    <div class="form-section">
+                        <h3 class="form-section-title">
+                            <i class="fas fa-upload"></i> Multi-Modal Data Upload
+                        </h3>
+                        
+                        <!-- Medical Image Upload -->
+                        <div class="upload-container">
+                            <div class="upload-box" id="imageUploadBox">
+                                <input type="file" id="medicalImage" name="medical_image" 
+                                       accept=".jpg,.jpeg,.png,.dcm,.nii" class="file-input">
+                                <div class="upload-content">
+                                    <i class="fas fa-images upload-icon"></i>
+                                    <h4>Medical Image (Optional)</h4>
+                                    <p>Upload X-ray, CT scan, or MRI image</p>
+                                    <button type="button" class="btn-upload" onclick="document.getElementById('medicalImage').click()">
+                                        <i class="fas fa-cloud-upload-alt"></i> Choose File
+                                    </button>
+                                    <small>Supported: JPG, PNG, DICOM • Max 16MB</small>
+                                </div>
+                                <div class="upload-preview" id="imagePreview" style="display: none;">
+                                    <img id="imagePreviewImg" src="" alt="Preview">
+                                    <button type="button" class="btn-remove" onclick="removeFile('image')">
+                                        <i class="fas fa-times"></i>
+                                    </button>
+                                    <span class="file-name" id="imageFileName"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Audio Upload -->
+                        <div class="upload-container">
+                            <div class="upload-box" id="audioUploadBox">
+                                <input type="file" id="audioFile" name="audio_file" 
+                                       accept=".mp3,.wav,.ogg,.m4a" class="file-input">
+                                <div class="upload-content">
+                                    <i class="fas fa-microphone-alt upload-icon"></i>
+                                    <h4>Voice/Audio Record (Optional)</h4>
+                                    <p>Upload audio of cough or voice symptoms</p>
+                                    <button type="button" class="btn-upload" onclick="document.getElementById('audioFile').click()">
+                                        <i class="fas fa-cloud-upload-alt"></i> Choose File
+                                    </button>
+                                    <small>Supported: MP3, WAV, OGG • Max 16MB</small>
+                                </div>
+                                <div class="upload-preview" id="audioPreview" style="display: none;">
+                                    <i class="fas fa-file-audio preview-audio-icon"></i>
+                                    <button type="button" class="btn-remove" onclick="removeFile('audio')">
+                                        <i class="fas fa-times"></i>
+                                    </button>
+                                    <span class="file-name" id="audioFileName"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary btn-large" id="submitBtn">
+                            <i class="fas fa-brain"></i> Analyze with AI
+                        </button>
+                    </div>
+                </form>
+
+                <!-- Loading Indicator -->
+                <div class="loading-container" id="loadingContainer" style="display: none;">
+                    <div class="loading-spinner"></div>
+                    <h3>AI Analysis in Progress...</h3>
+                    <p>Processing your multi-modal data</p>
+                    <div class="loading-steps">
+                        <div class="loading-step" id="step1">
+                            <i class="fas fa-check-circle"></i> Analyzing symptoms
+                        </div>
+                        <div class="loading-step" id="step2">
+                            <i class="fas fa-spinner fa-spin"></i> Processing medical data
+                        </div>
+                        <div class="loading-step" id="step3">
+                            <i class="fas fa-clock"></i> Generating diagnosis
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Results Section -->
+                <div class="results-container" id="resultsContainer" style="display: none;">
+                    <div class="results-header">
+                        <h3><i class="fas fa-clipboard-check"></i> Diagnosis Results</h3>
+                        <button class="btn btn-secondary btn-small" onclick="resetForm()">
+                            <i class="fas fa-redo"></i> New Diagnosis
+                        </button>
+                    </div>
+                    
+                    <div class="result-card patient-info-result">
+                        <h4><i class="fas fa-user-md"></i> Patient Information</h4>
+                        <div id="patientInfoResult"></div>
+                    </div>
+
+                    <div class="result-card primary-result">
+                        <h4><i class="fas fa-diagnoses"></i> AI Diagnosis</h4>
+                        <div id="diagnosisResult"></div>
+                    </div>
+
+                    <div class="result-card" id="decisionSupportCard" style="display: none; border-left: 4px solid #0F766E;">
+                        <h4><i class="fas fa-chart-line"></i> Clinical Decision Support</h4>
+                        <div id="decisionSupportResult"></div>
+                    </div>
+
+                    <div class="result-card recommendation-result">
+                        <h4><i class="fas fa-notes-medical"></i> Recommendations</h4>
+                        <div id="recommendationResult"></div>
+                    </div>
+
+                    <div class="result-card" id="doctorRecommendationCard" style="display: none; border-left: 4px solid #0EA5E9;">
+                        <h4><i class="fas fa-user-doctor"></i> Best Doctor Recommendations (By Location)</h4>
+                        <div id="doctorRecommendationResult"></div>
+                    </div>
+
+                    <div id="multiModalResults"></div>
+
+                    <div class="result-actions">
+                        <button class="btn btn-primary" onclick="downloadReport()">
+                            <i class="fas fa-download"></i> Download Report
+                        </button>
+                        <button class="btn btn-secondary" onclick="shareReport()">
+                            <i class="fas fa-share-alt"></i> Share with Doctor
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section" id="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>About MediAI</h2>
+                    <p>MediAI is an advanced AI-powered medical pre-diagnosis system that utilizes cutting-edge machine learning algorithms to provide preliminary health assessments. Our multi-modal approach combines text analysis, medical image processing, and audio pattern recognition to deliver comprehensive insights.</p>
+                    <div class="about-features">
+                        <div class="about-feature-item">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>Secure & Private</span>
+                        </div>
+                        <div class="about-feature-item">
+                            <i class="fas fa-certificate"></i>
+                            <span>HIPAA Compliant</span>
+                        </div>
+                        <div class="about-feature-item">
+                            <i class="fas fa-clock"></i>
+                            <span>24/7 Available</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <div class="about-card">
+                        <i class="fas fa-brain"></i>
+                        <h3>AI Technology</h3>
+                        <p>Advanced neural networks</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3><i class="fas fa-heartbeat"></i> MediAI</h3>
+                    <p>Advanced AI Medical Pre-Diagnosis System for preliminary health assessment.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#diagnosis">Diagnosis</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p><i class="fas fa-envelope"></i> support@mediai.com</p>
+                    <p><i class="fas fa-phone"></i> +1 (555) 123-4567</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 MediAI. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- AI Health Chatbot -->
+    <div class="chatbot-container" id="chatbotContainer">
+        <div class="chatbot-header">
+            <div class="chatbot-header-content">
+                <div class="chatbot-avatar">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <div class="chatbot-title">
+                    <h4>AI Health Assistant</h4>
+                    <span class="chatbot-status">Online</span>
+                </div>
+            </div>
+            <button class="chatbot-close" id="chatbotClose">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        
+        <div class="chatbot-messages" id="chatbotMessages">
+            <div class="chat-message bot-message">
+                <div class="message-avatar">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <div class="message-content">
+                    <p>Hello! 👋 I'm your AI Medical Assistant. I can help you understand symptoms and provide health guidance. What can I help you with today?</p>
+                    <span class="message-time">Just now</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="chatbot-suggestions" id="chatbotSuggestions">
+            <button class="suggestion-chip" onclick="sendSuggestion('I have a fever')">
+                I have a fever
+            </button>
+            <button class="suggestion-chip" onclick="sendSuggestion('I\'m feeling unwell')">
+                I'm feeling unwell
+            </button>
+            <button class="suggestion-chip" onclick="sendSuggestion('General health questions')">
+                Health questions
+            </button>
+        </div>
+        
+        <div class="chatbot-input-container">
+            <input type="text" 
+                   class="chatbot-input" 
+                   id="chatbotInput" 
+                   placeholder="Type your health concern..."
+                   autocomplete="off">
+            <button class="chatbot-send" id="chatbotSend">
+                <i class="fas fa-paper-plane"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Chatbot Toggle Button -->
+    <button class="chatbot-toggle" id="chatbotToggle">
+        <i class="fas fa-comments"></i>
+        <span class="chatbot-badge">AI</span>
+    </button>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/chatbot.js') }}"></script>
+</body>
+</html>
