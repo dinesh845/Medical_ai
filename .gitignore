@@ -53,6 +53,10 @@ uploads/audio/*
 # Data
 data/*.json
 !data/.gitkeep
+data/secure.key
+
+# Local packages/archives
+*.zip
 
 # Logs
 *.log
