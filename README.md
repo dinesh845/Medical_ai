@@ -275,7 +275,7 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 ## 👨‍⚕️ Support
 
 For support, questions, or feedback:
-- Email: support@mediai.com
+- Email: dineshrothu2@gmail.com
 - GitHub Issues: [Create an issue](https://github.com/yourusername/medical_ai/issues)
 
 ## 🙏 Acknowledgments
